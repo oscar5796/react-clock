@@ -8,7 +8,7 @@ export const CLOCK_FORMAT = {
   '12_HOURS': '12_HOURS'
 } as const; 
 
-const ClockTimer = ({zoomSize = 2, format = CLOCK_FORMAT["24_HOURS"]}: {zoomSize?: number, format?: Format }) => {
+const ClockTimer = ({zoomSize = 0.5, format = CLOCK_FORMAT["24_HOURS"]}: {zoomSize?: number, format?: Format }) => {
   const [hoursArray, setHoursArray] = useState<Digit[]>([]);
   const [minutesArray, setMinutesArray] = useState<Digit[]>([]);
   const [secondsArray, setSecondsArray] = useState<Digit[]>([]);

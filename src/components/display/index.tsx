@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import { DISPLAY_DIMENTIONS } from "../../constants";
+import { useZoomSize } from "../../custom-hooks/useZoomSize";
 
 // The inputs are named with letters
 type DisplayInput = {
@@ -20,14 +22,13 @@ const Display = ({
   e = true,
   f = true,
   g = true,
-  zoomSize = 4,
+  zoomSize = 1,
 }: DisplayInput) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { ctx } = useZoomSize(canvasRef, zoomSize, DISPLAY_DIMENTIONS);
 
-  const ctx = canvasRef.current?.getContext("2d");
-  if (ctx) {
-    ctx.scale(zoomSize, zoomSize);
-    ctx.clearRect(0, 0, 65, 100);
+  if (ctx && canvasRef.current) {
+    ctx.clearRect(0, 0, 80 * zoomSize, 190 * zoomSize);
     ctx.fillStyle = "red";
 
     a && ctx.fillRect(16, 12, 31, 4);
@@ -39,11 +40,7 @@ const Display = ({
     g && ctx.fillRect(16, 47, 31, 4);
   }
 
-  return (
-    <canvas ref={canvasRef} width={520} height={400}>
-      Number display
-    </canvas>
-  );
+  return <canvas ref={canvasRef}>Number display</canvas>;
 };
 
 export default Display;

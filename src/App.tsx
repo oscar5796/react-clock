@@ -6,8 +6,13 @@ import "./App.css";
 import ClockTimer, { CLOCK_FORMAT } from "./components/clock-timer/index.tsx";
 
 function App() {
-
-  return <ClockTimer format={CLOCK_FORMAT['12_HOURS']}/>;
+  return (
+    <>
+      <ClockTimer format={CLOCK_FORMAT["12_HOURS"]} />
+      <ClockTimer format={CLOCK_FORMAT["12_HOURS"]} />
+      <ClockTimer format={CLOCK_FORMAT["12_HOURS"]} />
+    </>
+  );
 }
 
 export default App;
